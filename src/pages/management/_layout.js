@@ -43,13 +43,15 @@ export default function(props) {console.log(props)
     return (
       <div>
         <Row>
-            <Col span={6}>
+            <Col span={1}></Col>
+            <Col span={5}>
                 <Sider pathname={pathname}/>
             </Col>
-            <Col span={18}>
+            <Col span={17}>
             <div style={{width:'256px', height:'50px',textAlign:"center",lineHeight:'50px'}}></div>
                 { props.children }
             </Col>
+            <Col span={1}></Col>
         </Row>
       </div>
     );
