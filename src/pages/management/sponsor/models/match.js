@@ -18,6 +18,7 @@ export default {
     },
     *search({payload},{call,put}) {
         const response = yield call(queryMatches,{...payload,method:'search'});
+        console.log('------ response ------',response);
         yield put({
             type: 'save',
             payload: response,

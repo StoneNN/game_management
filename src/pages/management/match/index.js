@@ -70,13 +70,14 @@ class Bridge extends Component {
                 return (
                     <div>
                         {this.props.games.dataSource.length >= 1
-                            ? (
+                            ?   <React.Fragment>
                                 <Popconfirm title="Sure to delete?" onConfirm={() => this.handleDelete(record.key)}>
                                     <a href="javascript:;" style={{ marginRight: '10px' }}>删除</a>
                                 </Popconfirm>
-                            ) : null}
-                        <a href="javascript:;" onClick={this.edit.bind(this, record)} style={{marginRight: '10px'}}>编辑</a>
-                        <a href="javascript:;" onClick={this.view.bind(this, record)}>查看</a>
+                                <a href="javascript:;" onClick={this.edit.bind(this, record)} style={{marginRight: '10px'}}>编辑</a>
+                                <a href="javascript:;" onClick={this.view.bind(this, record)}>查看</a>
+                                </React.Fragment>
+                             : null}
                     </div>
                 )
             },

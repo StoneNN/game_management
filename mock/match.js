@@ -16,63 +16,63 @@ import Mock, {Random} from 'mockjs';
      }));
     }
  
-    console.log('-------dataSource-------',dataSource);
+    // console.log('-------dataSource-------',dataSource);
   
-export default {
-    'POST /api/match': (req,res)=>{
-         console.log('------ req.body ------',req.body);
-         const {name,type,owner,phone,address,method,deleteKeys=[],key} = req.body;
-        if(method==='search'){
-           let searchData;
-             if(name){ 
-                console.log('search -------',name)
-                searchData = dataSource.filter( (item)=>(item.name.indexOf(name) > -1) )
-                console.log('search_status ------',status)
-                if(status){
-                searchData = searchData.filter( (item)=>(item.status == status ) ) ; 
+    export default {
+      'POST /api/match': (req,res)=>{
+           console.log('------ req.body ------',req.body);
+           const {name,type,owner,phone,address,method,deleteKeys=[],key} = req.body;
+          if(method==='search'){
+             let searchData;
+               if(name){ 
+                  console.log('search -------',name)
+                  searchData = dataSource.filter((item)=>(item.name.indexOf(name)!= -1) )
+                  console.log('search_status ------',searchData)
+                  if(searchData){
+                  res.send(searchData); 
+                }
+              // res.json(searchData)
+              // return;
               }
-            res.json(searchData)
-            return;
-            }
-            if(status){
-                searchData = dataSource.filter( (item)=>(item.status == status ) ) ; 
-            }
-            res.json(searchData)
-            return;
-         }
-        if(method==='delete'){
-          console.log(2)
-            if(deleteKeys){ 
-              _.remove(dataSource, function(item) {
-                return deleteKeys.indexOf(item.key) > -1;
-              });
-            }
-            res.json(dataSource)
-            return;
-         }
-        if(method==='add'){
-          console.log(2)
-              dataSource.unshift({
-              key: new Date().getTime(),
-              name,
-              type,
-              owner,
-              phone,
-              address
-            })
+              // if(status){
+              //     searchData = dataSource.filter( (item)=>(item.status == status ) ) ; 
+              // }
+              // res.json(searchData)
+              // return;
+           }
+          else if(method==='delete'){
+            console.log(2)
+              if(deleteKeys){ 
+                _.remove(dataSource, function(item) {
+                  return deleteKeys.indexOf(item.key) > -1;
+                });
+              }
               res.json(dataSource)
               return;
-         }
-        if(method==='edit'){
-          console.log(2)
-              dataSource.forEach((item,index)=>{
-                  if(item.key == key){
-                    dataSource[index] = {key,name,type,owner,phone,address}
-                  }
+           }
+          else if(method==='add'){
+            console.log(2)
+                dataSource.unshift({
+                key: new Date().getTime(),
+                name,
+                type,
+                owner,
+                phone,
+                address
               })
-              res.json(dataSource)
-              return;
-         }
-        res.json(dataSource)
+                res.json(dataSource)
+                return;
+           }
+          else if(method==='edit'){
+            console.log(2)
+                dataSource.forEach((item,index)=>{
+                    if(item.key == key){
+                      dataSource[index] = {key,name,type,owner,phone,address}
+                    }
+                })
+                res.json(dataSource)
+                return;
+           }
+          res.json(dataSource);
+    }
   }
-}

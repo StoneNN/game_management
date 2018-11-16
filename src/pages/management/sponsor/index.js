@@ -34,11 +34,11 @@ const Option = Select.Option;
          return (
             <Form layout="inline" onSubmit={this.handleSubmit}>
                 <FormItem label="主办方名称" >
-                    {getFieldDecorator('name', { })( <Input  placeholder="请输入" />)}
+                    {getFieldDecorator('name', { })( <Input placeholder="主办方名称"/>)}
                 </FormItem>
                 <FormItem>
-                    <Button type="primary" htmlType="submit" >  查询  </Button>
-                    <Button type='primary' style={{ marginLeft: 8 }} onClick={this.handleFormReset}> 重置  </Button>
+                    <Button type="primary" htmlType="submit" > 查询 </Button>
+                    <Button type='primary' style={{ marginLeft: 8 }} onClick={this.handleFormReset}> 重置 </Button>
                 </FormItem>
             </Form>)
      }
@@ -48,7 +48,7 @@ const Option = Select.Option;
 // @Form.create()
 // @connect(({match})=>({match})) 
 
-SearchForm = Form.create({})(SearchForm);
+SearchForm = Form.create()(SearchForm);
 SearchForm = connect(({match})=>({match}))(SearchForm);
 
 
@@ -275,8 +275,8 @@ class TableList extends Component{
             <div>
                 <SearchForm handleFormReset={this.fetchData} />
                 <div style={{ overflow:'hidden',lineHeight:'50px', height:'50px' }} >
-                    <Button onClick={this.handleDelete} style={{ float:"right",marginRight:'2%',marginTop:'1%' }} >删除</Button>
-                    <Button onClick={this.showAddModal} style={{ float:"right",marginRight:'2%',marginTop:'1%' }} >新建</Button> 
+                    <Button onClick={this.handleDelete} style={{ float:'right',marginRight:'2%',marginTop:'1%' }} >删除</Button>
+                    <Button onClick={this.showAddModal} style={{ float:'right',marginRight:'2%',marginTop:'1%' }} >新建</Button> 
                 </div>
                 <Table 
                     rowSelection={{onChange:this.onChange}} 
@@ -302,7 +302,7 @@ class TableList extends Component{
 // @Form.create()
 // @connect(({match})=>({match})) 
 
-TableList = Form.create({})(TableList);
+TableList = Form.create()(TableList);
 TableList = connect(({match})=>({match}))(TableList);
 
 export default TableList;
