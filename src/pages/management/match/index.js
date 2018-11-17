@@ -46,20 +46,18 @@ class Bridge extends Component {
             dataIndex:'state',
             align:'center',
             render: (text, record) => {
-                        // const options=new Map([['draft','待审核'],['conformed','已审核'],['locked','报名截止'],['ready','进行中'],['done','结束'],['cancel','取消比赛']])
-                        console.log('--- 状态 record --- ',record);
-                        return (                         
-                            <Select style={{width:100}}  onChange={this.stateChange.bind(this,record)} >
-                                <Option value='draft'>待审核</Option>
-                                <Option value='conformed'>已审核</Option>
-                                <Option value='locked'>报名截止</Option>
-                                <Option value='ready'>进行中</Option>
-                                <Option value='done'>结束</Option>
-                                <Option value='cancel'>取消比赛</Option>                              
-                            </Select>
-                        )
-                    }
-                    
+                console.log('--- 状态 record --- ',record);
+                return (                         
+                    <Select style={{width:100}}  onChange={this.stateChange.bind(this,record)} >
+                        <Option value='draft'>待审核</Option>
+                        <Option value='conformed'>已审核</Option>
+                        <Option value='locked'>报名截止</Option>
+                        <Option value='ready'>进行中</Option>
+                        <Option value='done'>结束</Option>
+                        <Option value='cancel'>取消比赛</Option>                              
+                    </Select>
+                )
+            }       
         },
         {
             title: '操作',
@@ -84,19 +82,23 @@ class Bridge extends Component {
         }
     ]
    
+    //查看详情
     view=(record)=>{
         router.push(`/management/match/gameView?id=${record.key}`)
     }
+    //删除一项
     handleDelete = (key) => {
         this.props.dispatch({
             type: 'games/delOne',
             key
         })
     }
+    //修改状态
     stateChange(record,value){
        console.log('--- stateChange record-value --- ',record,value); 
        record.state=value
     }
+    //
     onSelectChange = (selectedRowKeys, selectedRows) => {
         this.props.dispatch({
             type: 'games/saveSelectedRowKeys',
@@ -284,13 +286,6 @@ class Bridge extends Component {
                     dataSource={dataSource}
                     pagination={pagination} 
                 />
-                {/* <Pop
-                    visible={visible}
-                    changeVisible={this.changeVisible.bind(this)}
-                    edit={edit}
-                    editChange={this.editChange.bind(this)}
-                >
-                </Pop> */}
                 <PopForm
                     title='新建比赛'
                     list={list}

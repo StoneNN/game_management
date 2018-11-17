@@ -16,29 +16,29 @@ import Mock, {Random} from 'mockjs';
      }));
     }
  
-    // console.log('-------dataSource-------',dataSource);
+    console.log('-------dataSource-------',dataSource);
   
     export default {
       'POST /api/match': (req,res)=>{
            console.log('------ req.body ------',req.body);
            const {name,type,owner,phone,address,method,deleteKeys=[],key} = req.body;
-          if(method==='search'){
+           console.log('------ method -------',method);
+
+          if(method==='mapData'){
+            // console.log('---- res ----',res);
+            // console.log('---- res.json(dataSource) ----',res.json(dataSource));
+            res.json(dataSource);
+           }
+          else if(method==='search'){
              let searchData;
                if(name){ 
                   console.log('search -------',name)
                   searchData = dataSource.filter((item)=>(item.name.indexOf(name)!= -1) )
                   console.log('search_status ------',searchData)
                   if(searchData){
-                  res.send(searchData); 
-                }
-              // res.json(searchData)
-              // return;
+                    res.send(searchData); 
+                  }
               }
-              // if(status){
-              //     searchData = dataSource.filter( (item)=>(item.status == status ) ) ; 
-              // }
-              // res.json(searchData)
-              // return;
            }
           else if(method==='delete'){
             console.log(2)
@@ -48,7 +48,6 @@ import Mock, {Random} from 'mockjs';
                 });
               }
               res.json(dataSource)
-              return;
            }
           else if(method==='add'){
             console.log(2)
@@ -61,7 +60,6 @@ import Mock, {Random} from 'mockjs';
                 address
               })
                 res.json(dataSource)
-                return;
            }
           else if(method==='edit'){
             console.log(2)
@@ -71,8 +69,6 @@ import Mock, {Random} from 'mockjs';
                     }
                 })
                 res.json(dataSource)
-                return;
            }
-          res.json(dataSource);
     }
   }

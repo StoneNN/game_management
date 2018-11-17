@@ -9,8 +9,9 @@ export default {
   },
 
   effects: {
-    *fetch(_, { call, put }) {
-      const response = yield call(queryMatches);console.log(response)
+    *fetch( _, { call, put }) {
+      const response = yield call(queryMatches,{method:'mapData'});
+      console.log(response)
       yield put({
         type: 'save',
         payload: response,

@@ -199,7 +199,7 @@ class TableList extends Component{
                   {getFieldDecorator('type', {
                     rules: [{ required: true, message: '请输入主办方类型' }],
                   })( 
-                        <Select placeholder="请选择" style={{ width: '200px' }}>
+                        <Select placeholder="请选择">
                             <Option value="0">协会</Option>
                             <Option value="1">俱乐部</Option>
                         </Select>)
@@ -285,7 +285,7 @@ class TableList extends Component{
                 />
                 <Modal
                 title={isAdding?'添加':'编辑'} 
-                width={640}
+                width={400}
                 cancelText='取消'
                 destroyOnClose
                 visible={visible}

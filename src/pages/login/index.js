@@ -79,6 +79,7 @@ class LoginComp extends React.Component {
   render() {
     return (
       <div className={styles.normal}>
+        {/* <h1 className={styles.title}>智赛棋牌赛事管理系统</h1> */}
         <Login
           defaultActiveKey={this.state.type}
           onTabChange={this.onTabChange}
