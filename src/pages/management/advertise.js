@@ -113,17 +113,20 @@ export default class EditableTable extends React.Component {
     this.columns = [{
       title: '广告商名称',
       dataIndex: 'name',
-      // width: '30%',
+      align: 'center', 
       // editable: true,
     }, {
       title: '负责人',
       dataIndex: 'owner',
+      align: 'center', 
     }, {
       title: '地址',
       dataIndex: 'address',
+      align: 'center', 
     }, {
       title: '电话',
       dataIndex: 'phone',
+      align: 'center', 
     }
     ];
 
@@ -131,7 +134,7 @@ export default class EditableTable extends React.Component {
       dataSource: [{
         key: '0',
         name: '联想集团',
-        owner: '张三丰',
+        owner: '张三专心致志销自行丰',
         address: '北京市海淀区海淀路111号',
         phone:'18645659968'
       }, {
@@ -185,7 +188,7 @@ export default class EditableTable extends React.Component {
         <Table
           components={components}
           rowClassName={() => 'editable-row'}
-          // bordered
+          bordered
           dataSource={dataSource}
           columns={columns}
         />

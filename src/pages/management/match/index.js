@@ -48,7 +48,7 @@ class Bridge extends Component {
             render: (text, record) => {
                 console.log('--- 状态 record --- ',record);
                 return (                         
-                    <Select style={{width:100}}  onChange={this.stateChange.bind(this,record)} >
+                    <Select style={{width:100}} defaultValue= {record.state} onChange={this.stateChange.bind(this,record)} >
                         <Option value='draft'>待审核</Option>
                         <Option value='conformed'>已审核</Option>
                         <Option value='locked'>报名截止</Option>
@@ -75,13 +75,13 @@ class Bridge extends Component {
                                 <a href="javascript:;" onClick={this.edit.bind(this, record)} style={{marginRight: '10px'}}>编辑</a>
                                 <a href="javascript:;" onClick={this.view.bind(this, record)}>查看</a>
                                 </React.Fragment>
-                             : null}
+                            : null}
                     </div>
                 )
             },
         }
     ]
-   
+
     //查看详情
     view=(record)=>{
         router.push(`/management/match/gameView?id=${record.key}`)
@@ -95,8 +95,8 @@ class Bridge extends Component {
     }
     //修改状态
     stateChange(record,value){
-       console.log('--- stateChange record-value --- ',record,value); 
-       record.state=value
+        console.log('--- stateChange record-value --- ',record,value); 
+        record.state=value
     }
     //
     onSelectChange = (selectedRowKeys, selectedRows) => {

@@ -6,6 +6,10 @@
   @media screen and (max-width: @screen-sm) {width: 95%;}
 }
 
+.loginBox{
+  width:350px;
+}
+
 /* .title {
   font-size: 2.5rem;
   font-weight: normal;
@@ -15,7 +19,3 @@
   color: white;
   margin: 0;
 } */
-
-.loginBox{
-  width:350px;
-}

@@ -1,7 +1,7 @@
 import { queryMatches } from '@/services/api';
 
 export default {
-  namespace: 'match',
+  namespace: 'sponsor',
 
   state: {
     list: [],

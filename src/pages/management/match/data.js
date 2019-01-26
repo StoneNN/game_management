@@ -1,15 +1,15 @@
- const data = [{
+const data = [{
     key: '1',
     name: '石家庄桥牌锦标赛',
     signEndTime: '2017-05-04',
     start_time: '2017-08-02',
     over_time: '2017-08-05',
-    state:'tongguo',
     referee:'裁判',
     arbitrator: '仲裁',
     host_unit: '主办方',
     undertaking_unit: '赞助商',
-    cooperating_unit: '承办'
+    cooperating_unit: '承办',
+    state:'待审核',
 }, {
     key: '2',
     name: '石家庄桥牌团体赛',
@@ -21,7 +21,7 @@
     host_unit: '主办方',
     undertaking_unit: '赞助商',
     cooperating_unit: '承办',
-    state:'',
+    state:'待审核',
 }, {
     key: '3',
     name: '宏鸿杯桥牌锦标赛',
@@ -33,7 +33,7 @@
     host_unit: '主办方',
     undertaking_unit: '赞助商',
     cooperating_unit: '承办',
-    state:'',
+    state:'待审核',
 }, {
     key: '4',
     name: '鹿泉桥牌锦标赛',
@@ -45,7 +45,7 @@
     host_unit: '主办方',
     undertaking_unit: '赞助商',
     cooperating_unit: '承办',
-    state:'',
+    state:'待审核',
 }
 ,{
     key: '5',
@@ -58,7 +58,7 @@
     host_unit: '主办方',
     undertaking_unit: '赞助商',
     cooperating_unit: '承办',
-    state:'',
+    state:'待审核',
 },
 {
     key: '6',
@@ -71,7 +71,7 @@
     host_unit: '主办方',
     undertaking_unit: '赞助商',
     cooperating_unit: '承办',
-    state:'',
+    state:'待审核',
 },{
     key: '7',
     name: '河北桥牌锦标赛',
@@ -83,7 +83,7 @@
     host_unit: '主办方',
     undertaking_unit: '赞助商',
     cooperating_unit: '承办',
-    state:'',
+    state:'待审核',
 },
 ];
 export default data

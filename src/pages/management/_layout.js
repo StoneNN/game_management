@@ -7,52 +7,54 @@ class Sider extends React.Component {
         super(props);
     }
     handleClick = (e) => {
-      console.log('click ', e);
+        console.log('click ', e);
     }
     getMenuItem(router){
-      return  router.map(function(item){
+        return  router.map(function(item){
             return (
                 <Menu.Item key= {item.path}>
                     <Link to={item.path}>
                         {item.name}
                     </Link>
                 </Menu.Item>)
-       })
+        })
     }
     render() {
         const {pathname}=this.props;
-       console.log(pathname)
-      return (
-          <div>
-               <div style={{width:'256px', height:'50px',textAlign:"center",lineHeight:'50px'}}>后台管理</div>
-               <Menu
-                onClick={this.handleClick}
-                style={{ width: 256,textAlign:'center' }}
-                mode="inline"
-                selectedKeys={[pathname]}
+        console.log('----------pathname-----------',pathname)
+        return (
+            <div style={{width:'100%'}}>
+                <div style={{width:'100%', height:'50px',textAlign:"center",lineHeight:'50px'}}>后台管理</div>
+                <Menu
+                    onClick={this.handleClick}
+                    style={{ width: '90%',textAlign:'center' }}
+                    mode="inline"
+                    selectedKeys={[pathname]}
                 >
                     {this.getMenuItem(managementRouter)}
                 </Menu>
-          </div>
+            </div>
         
-      );
+        );
     }
-  }
-export default function(props) {console.log(props)
+}
+
+export default function(props) {
+    console.log(props);
     const {location:{pathname}}=props
     return (
-      <div>
-        <Row>
-            <Col span={1}></Col>
-            <Col span={5}>
-                <Sider pathname={pathname}/>
-            </Col>
-            <Col span={17}>
-            <div style={{width:'256px', height:'50px',textAlign:"center",lineHeight:'50px'}}></div>
-                { props.children }
-            </Col>
-            <Col span={1}></Col>
-        </Row>
-      </div>
+        <div>
+            <Row>
+                <Col xl={1} md={1}></Col>
+                <Col xl={5} md={3}>
+                    <Sider pathname={pathname}/>
+                </Col>
+                <Col xl={16} md={19}>
+                <div style={{width:'100%', height:'50px',textAlign:"center",lineHeight:'50px'}}></div>
+                    { props.children }
+                </Col>
+                <Col xl={1} md={1}></Col>
+            </Row>
+        </div>
     );
-  }
+}

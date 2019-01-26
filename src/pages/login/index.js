@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import Login from 'ant-design-pro/lib/Login';
 import { Alert, Checkbox,Modal } from 'antd';
 import {connect} from 'dva';
@@ -8,7 +9,7 @@ import styles from './index.css';
 
 const { Tab, UserName, Password, Mobile, Captcha, Submit } = Login;
 
-class LoginComp extends React.Component {
+class LoginComp extends Component {
   state = {
     notice: '',
     type: 'tab1',
@@ -77,6 +78,7 @@ class LoginComp extends React.Component {
     });
   }
   render() {
+    console.log('------------ loginForm -----------',this.props.loginForm);
     return (
       <div className={styles.normal}>
         {/* <h1 className={styles.title}>智赛棋牌赛事管理系统</h1> */}
