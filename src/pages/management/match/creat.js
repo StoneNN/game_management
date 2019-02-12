@@ -24,10 +24,10 @@ const formItemLayout = {
 };
 const competitionType = ['车轮赛', '小组赛', '竞技赛', '团体赛', '友谊赛']
 const integralWay = ['加分制', '减分制', '总分制', '不计分']
+
 export default class Pop extends Component {
     state = {
         edit: {},
-       
         newOrEdit: false,   //false: new, true: edit
     }
     componentWillReceiveProps(nextProps) {
@@ -146,28 +146,33 @@ export default class Pop extends Component {
                         newOrEdit ?
                         <div>
                     <FormItem {...formItemLayout} label="裁判">
-                        <Input value={edit.referee}
-                        onChange={this.refereeChange.bind(this)}
+                        <Input 
+                            value={edit.referee}
+                            onChange={this.refereeChange.bind(this)}
                         ></Input>
                     </FormItem>
                     <FormItem {...formItemLayout} label="仲裁">
-                        <Input value={edit.arbitrator}
-                        onChange={this.arbitratorChange.bind(this)}
+                        <Input 
+                            value={edit.arbitrator}
+                            onChange={this.arbitratorChange.bind(this)}
                         ></Input>
                     </FormItem>
                     <FormItem {...formItemLayout} label="举办方">
-                        <Input value={edit.host_unit}
-                        onChange={this.host_unitChange.bind(this)}
+                        <Input 
+                            value={edit.host_unit}
+                            onChange={this.host_unitChange.bind(this)}
                         ></Input>
                     </FormItem>
                     <FormItem {...formItemLayout} label="承办单位">
-                        <Input value={edit.undertaking_unit}
-                        onChange={this.undertaking_unitChange.bind(this)}
+                        <Input 
+                            value={edit.undertaking_unit}
+                            onChange={this.undertaking_unitChange.bind(this)}
                         ></Input>
                     </FormItem>
                     <FormItem {...formItemLayout} label="协办单位">
-                        <Input value={edit.cooperating_unit}
-                        onChange={this.cooperating_unitChange.bind(this)}
+                        <Input 
+                            value={edit.cooperating_unit}
+                            onChange={this.cooperating_unitChange.bind(this)}
                         ></Input>
                     </FormItem>
                     </div>

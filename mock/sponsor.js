@@ -13,33 +13,33 @@ import Mock, {Random} from 'mockjs';
         owner:Mock.Random.cname(),
         'phone|1':/^1[0-9]{10}$/ , 
         address:Random.county(true)
-     }));
+      }));
     }
- 
+
     console.log('-------dataSource-------',dataSource);
   
     export default {
       'POST /api/sponsor': (req,res)=>{
-           console.log('------ req.body ------',req.body);
-           const {name,type,owner,phone,address,method,deleteKeys=[],key} = req.body;
-           console.log('------ method -------',method);
+          console.log('------ req.body ------',req.body);
+          const {name,type,owner,phone,address,method,deleteKeys=[],key} = req.body;
+          console.log('------ method -------',method);
 
           if(method==='mapData'){
             // console.log('---- res ----',res);
             // console.log('---- res.json(dataSource) ----',res.json(dataSource));
             res.json(dataSource);
-           }
+          }
           else if(method==='search'){
-             let searchData;
-               if(name){ 
-                  console.log('search -------',name)
-                  searchData = dataSource.filter((item)=>(item.name.indexOf(name)!= -1) )
-                  console.log('search_status ------',searchData)
+            let searchData;
+              if(name){ 
+                  console.log('search -------',name);
+                  searchData = dataSource.filter((item)=>(item.name.indexOf(name)!= -1) );
+                  console.log('search_status ------',searchData);
                   if(searchData){
                     res.send(searchData); 
                   }
               }
-           }
+          }
           else if(method==='delete'){
             console.log(2)
               if(deleteKeys){ 
@@ -48,7 +48,7 @@ import Mock, {Random} from 'mockjs';
                 });
               }
               res.json(dataSource)
-           }
+          }
           else if(method==='add'){
             console.log(2)
                 dataSource.unshift({
@@ -60,7 +60,7 @@ import Mock, {Random} from 'mockjs';
                 address
               })
                 res.json(dataSource)
-           }
+          }
           else if(method==='edit'){
             console.log(2)
                 dataSource.forEach((item,index)=>{
@@ -69,6 +69,6 @@ import Mock, {Random} from 'mockjs';
                     }
                 })
                 res.json(dataSource)
-           }
+          }
     }
   }

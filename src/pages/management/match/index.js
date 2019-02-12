@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Input, Table, Popconfirm, AutoComplete, Select} from 'antd';
 import {connect} from 'dva'
 import data from './data'
-// import Pop from './creat'
+import Pop from './creat'
 import router from 'umi/router';
 import { routerActions } from 'react-router-redux';
 import PopForm from '@/component/form'
@@ -294,6 +294,7 @@ class Bridge extends Component {
                     edit={edit}
                     onOk={this.editChange.bind(this)}
                 />
+                {/* <Pop></Pop> */}
             </div>
         )
     }

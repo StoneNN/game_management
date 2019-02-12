@@ -20,7 +20,13 @@ const ListDecorator = ({detailData, announcement} ) => {
                         {/* <p><span className={styles.list_text}>状态：</span>{detailData.state}</p> */}
                         <p><span style={{ letterSpacing: 13 }} className={styles.list_text}>裁判：</span>{detailData.referee}</p>
                         <p><span style={{ letterSpacing: 13 }} className={styles.list_text} >仲裁：</span>{detailData.arbitrator}</p>
-                        <Button type='primary'style={{marginTop:20,width:130,height:35}}onClick={()=>router.push(`../team/Team`)}>我要报名</Button>
+                        <Button 
+                            type='primary'
+                            style={{marginTop:20,width:130,height:35}}
+                            onClick={()=>router.push(`../team/Team`)}
+                        >
+                            我要报名
+                        </Button>
                     </Card>
                 {/* </Col> */}
                 {/* <Col span={10}> */}

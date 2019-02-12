@@ -24,7 +24,19 @@ class Sider extends React.Component {
         console.log('----------pathname-----------',pathname)
         return (
             <div style={{width:'100%'}}>
-                <div style={{width:'100%', height:'50px',textAlign:"center",lineHeight:'50px'}}>后台管理</div>
+                <div 
+                    style={{
+                        width:'90%', 
+                        height:'50px', 
+                        fontSize:'20px',
+                        fontWeight:'bolder', 
+                        textAlign:"center",
+                        lineHeight:'50px',
+                        backgroundColor:'white',
+                        color:'white'
+                    }}>
+                        {/* 智赛棋牌后台管理系统 */}
+                    </div>
                 <Menu
                     onClick={this.handleClick}
                     style={{ width: '90%',textAlign:'center' }}
