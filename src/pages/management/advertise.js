@@ -111,7 +111,7 @@ export default class EditableTable extends React.Component {
   constructor(props) {
     super(props);
     this.columns = [{
-      title: '广告商名称',
+      title: '赞助商名称',
       dataIndex: 'name',
       align: 'center', 
       // editable: true,
@@ -127,6 +127,16 @@ export default class EditableTable extends React.Component {
       title: '电话',
       dataIndex: 'phone',
       align: 'center', 
+    }, {
+      title: '编辑',
+      dataIndex: 'edit',
+      align: 'center', 
+      render: (text, record) => {
+        console.log('--- 操作 record --- ',record);
+        return (
+            <a href="javascript:;" style={{marginRight: '10px'}}>编辑</a>
+        )
+      }
     }
     ];
 
@@ -188,7 +198,7 @@ export default class EditableTable extends React.Component {
         <Table
           components={components}
           rowClassName={() => 'editable-row'}
-          bordered
+          // bordered
           dataSource={dataSource}
           columns={columns}
         />

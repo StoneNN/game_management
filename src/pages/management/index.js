@@ -1,3 +1,3 @@
 import { Redirect } from "dva/router";
 
-export default ()=>(<Redirect to='/management/match'/>)
+export default ()=>(<Redirect to='/management/news'/>)

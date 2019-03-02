@@ -1,11 +1,12 @@
+import React from "react";
 import { Row, Col,Menu } from "antd";
 import { Link } from "dva/router";
 import managementRouter from '@/common/managementRouter';
 
 class Sider extends React.Component {
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
     handleClick = (e) => {
         console.log('click ', e);
     }

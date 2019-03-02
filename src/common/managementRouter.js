@@ -1,7 +1,9 @@
 const managementRouter=[
-    {name:"比赛",path:"/management/match"},
+    {name:"新闻",path:"/management/news"},
+    {name:"赛事",path:"/management/match"},
+    {name:"牌手",path:"/management/players"},
     {name:"主办方",path:"/management/sponsor"},
-    {name:"广告商",path:"/management/advertise"},
+    {name:"赞助商",path:"/management/advertise"},
 ]
 
 export default managementRouter;
