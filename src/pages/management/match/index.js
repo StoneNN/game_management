@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Button, Input, Table, Popconfirm, AutoComplete, Select} from 'antd';
-import {connect} from 'dva'
-import data from './data'
-import Pop from './creat'
+import {connect} from 'dva';
+import data from './data';
+// import Pop from './creat';
 import router from 'umi/router';
-import { routerActions } from 'react-router-redux';
-import PopForm from '@/component/form'
+// import { routerActions } from 'react-router-redux';
+import PopForm from '@/component/form';
 
 const Option=Select.Option;
+
 // function timetrans() {//时间戳转化
 //     var date = new Date();
 //     var Y = date.getFullYear() + '-';
@@ -15,10 +16,11 @@ const Option=Select.Option;
 //     var D = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate()) + ' ';
 //     return Y + M + D
 // }
+
 class Bridge extends Component {
     constructor(props){
         super(props);
-        this.props=props
+        this.props=props;
     }
     columns = [
         {
@@ -35,29 +37,33 @@ class Bridge extends Component {
             title: '开始时间',
             dataIndex: 'start_time',
             align:'center'
-        }, 
+        },
         {
             title: '结束时间',
             dataIndex: "over_time",
             align:'center'
-        }, 
+        },
         {
             title:'状态',
             dataIndex:'state',
             align:'center',
             render: (text, record) => {
                 console.log('--- 状态 record --- ',record);
-                return (                         
-                    <Select style={{width:100}} defaultValue= {record.state} onChange={this.stateChange.bind(this,record)} >
+                return (
+                    <Select
+                      style={{width:100}}
+                      defaultValue= {record.state}
+                      onChange={this.stateChange.bind(this,record)}
+                    >
                         <Option value='draft'>待审核</Option>
                         <Option value='conformed'>已审核</Option>
                         <Option value='locked'>报名截止</Option>
                         <Option value='ready'>进行中</Option>
                         <Option value='done'>结束</Option>
-                        <Option value='cancel'>取消比赛</Option>                              
+                        <Option value='cancel'>取消比赛</Option>
                     </Select>
                 )
-            }       
+            }
         },
         {
             title: '操作',
@@ -69,11 +75,11 @@ class Bridge extends Component {
                     <div>
                         {this.props.games.dataSource.length >= 1
                             ?   <React.Fragment>
-                                <Popconfirm title="Sure to delete?" onConfirm={() => this.handleDelete(record.key)}>
-                                    <a href="javascript:;" style={{ marginRight: '10px' }}>删除</a>
+                                <Popconfirm title="确认删除?" okText="确认" cancelText="取消" onConfirm={() => this.handleDelete(record.key)}>
+                                    <a href="# " style={{ marginRight: '10px' }}>删除</a>
                                 </Popconfirm>
-                                <a href="javascript:;" onClick={this.edit.bind(this, record)} style={{marginRight: '10px'}}>编辑</a>
-                                <a href="javascript:;" onClick={this.view.bind(this, record)}>查看</a>
+                                <a href="# " onClick={this.edit.bind(this, record)} style={{marginRight: '10px'}}>编辑</a>
+                                <a href="# " onClick={this.view.bind(this, record)}>查看</a>
                                 </React.Fragment>
                             : null}
                     </div>
@@ -95,7 +101,7 @@ class Bridge extends Component {
     }
     //修改状态
     stateChange(record,value){
-        console.log('--- stateChange record-value --- ',record,value); 
+        console.log('--- stateChange record-value --- ',record,value);
         record.state=value
     }
     //
@@ -284,7 +290,7 @@ class Bridge extends Component {
                     rowSelection={rowSelection}
                     columns={this.columns}
                     dataSource={dataSource}
-                    pagination={pagination} 
+                    pagination={pagination}
                 />
                 <PopForm
                     title='新建比赛'

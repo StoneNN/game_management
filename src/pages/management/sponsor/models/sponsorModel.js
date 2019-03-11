@@ -1,4 +1,5 @@
-import { queryMatches } from '@/services/api';
+
+import { queryItems } from '@/services/api';
 
 export default {
   namespace: 'sponsor',
@@ -9,16 +10,16 @@ export default {
   },
 
   effects: {
-    *fetch( _, { call, put }) {
-      const response = yield call(queryMatches,{method:'mapData'});
-      console.log(response)
+    *fetch( {payload}, { call, put }) {
+      const response = yield call(queryItems,{method:'mapData'});
+      console.log(response);
       yield put({
         type: 'save',
         payload: response,
       });
     },
     *search({payload},{call,put}) {
-        const response = yield call(queryMatches,{...payload,method:'search'});
+        const response = yield call(queryItems,{...payload, method:'search'});
         console.log('------ response ------',response);
         yield put({
             type: 'save',
@@ -26,33 +27,35 @@ export default {
         });
     },
     *delete({payload},{call,put}) {
-        const response = yield call(queryMatches,{...payload,method:'delete'});
+        const response = yield call(queryItems,{...payload,method:'delete'});
         yield put({
             type: 'save',
             payload: response,
         });
     },
-    *add({payload},{call,put}) {  console.log(payload)
-      const response = yield call(queryMatches,{...payload,method:'add'});
+    *add({payload},{call,put}) {
+      console.log(payload);
+      const response = yield call(queryItems,{...payload,method:'add'});
       yield put({
           type: 'save',
           payload: response,
       });
     },
-    *edit({payload},{call,put}) {  console.log(payload)
-      const response = yield call(queryMatches,{...payload,method:'edit'});
+    *edit({payload},{call,put}) {
+      console.log(payload);
+      const response = yield call(queryItems,{...payload,method:'edit'});
       yield put({
           type: 'save',
           payload: response,
       });
     }
-    
+
   },
   reducers: {
-    save(state, {payload}) { 
+    save(state, {payload}) {
       return {
         ...state,
-        list: payload,
+        list: payload
       };
     },
   },

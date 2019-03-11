@@ -113,28 +113,28 @@ export default class EditableTable extends React.Component {
     this.columns = [{
       title: '赞助商名称',
       dataIndex: 'name',
-      align: 'center', 
+      align: 'center',
       // editable: true,
     }, {
       title: '负责人',
       dataIndex: 'owner',
-      align: 'center', 
+      align: 'center',
     }, {
       title: '地址',
       dataIndex: 'address',
-      align: 'center', 
+      align: 'center',
     }, {
       title: '电话',
       dataIndex: 'phone',
-      align: 'center', 
+      align: 'center',
     }, {
       title: '编辑',
       dataIndex: 'edit',
-      align: 'center', 
+      align: 'center',
       render: (text, record) => {
         console.log('--- 操作 record --- ',record);
         return (
-            <a href="javascript:;" style={{marginRight: '10px'}}>编辑</a>
+            <a href="# " style={{marginRight: '10px'}}>编辑</a>
         )
       }
     }
@@ -192,6 +192,11 @@ export default class EditableTable extends React.Component {
         }),
       };
     });
+    const rowSelection = {
+        onChange: (selectedRowKeys, selectedRows) => {
+          console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+        }
+      };
     return (
       <div>
 
@@ -201,6 +206,7 @@ export default class EditableTable extends React.Component {
           // bordered
           dataSource={dataSource}
           columns={columns}
+          rowSelection={rowSelection}
         />
       </div>
     );

@@ -1,3 +1,4 @@
+
 const data = [{
     key: '1',
     name: '石家庄桥牌锦标赛',
@@ -86,4 +87,4 @@ const data = [{
     state:'待审核',
 },
 ];
-export default data
+export default data;

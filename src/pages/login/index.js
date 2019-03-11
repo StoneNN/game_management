@@ -93,37 +93,37 @@ class LoginComp extends Component {
               this.state.notice &&
               <Alert style={{ marginBottom: 24 }} message={this.state.notice} type="error" showIcon closable />
             }
-            <UserName 
-              name="username" 
-              placeholder="用户名" 
+            <UserName
+              name="username"
+              placeholder="用户名"
               rules={[{required: true, message: '用户名不能为空!'}]}
             />
-            <Password 
-              name="password" 
+            <Password
+              name="password"
               placeholder="密码"
               rules = {[{required: true, message: '密码不能为空!'}]}
             />
           </Tab>
           <Tab key="tab2" tab="验证码登录">
-            <Mobile 
-              name="mobile" 
-              placeholder="手机号"  
+            <Mobile
+              name="mobile"
+              placeholder="手机号"
               rules = {[{required: true, message: '手机号不能为空!'}]}
               />
-            <Captcha 
-              onGetCaptcha={() => console.log('获取验证码......')} 
-              name="captcha" 
-              placeholder="验证码" 
-              rules = {[{required: true, message: '验证码不能为空!'}]} 
+            <Captcha
+              onGetCaptcha={() => console.log('获取验证码......')}
+              name="captcha"
+              placeholder="验证码"
+              rules = {[{required: true, message: '验证码不能为空!'}]}
             />
           </Tab>
           <div>
-            <Checkbox 
-              checked={this.state.autoLogin} 
-              onChange={this.changeAutoLogin} 
+            <Checkbox
+              checked={this.state.autoLogin}
+              onChange={this.changeAutoLogin}
               style={{ float: 'left' }}
             >保持一直登录</Checkbox>
-            <a style={{ float: 'right' }} href="">忘记密码</a>
+            <a style={{ float: 'right' }} href="# ">忘记密码</a>
           </div>
           <Submit>登录</Submit>
         </Login>

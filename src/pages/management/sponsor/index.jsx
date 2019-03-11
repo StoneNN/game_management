@@ -1,4 +1,10 @@
-import { Component } from "react";
+/*
+ * @Author: Nxf
+ * @Date: 2019-03-04 10:18:36
+ * @Last Modified by: Nxf
+ * @Last Modified time: 2019-03-09 16:39:51
+ */
+import React, { Component } from "react";
 import { Table ,Form ,Input,Button,Select,Modal,Popconfirm,Divider} from 'antd';
 import {connect} from 'dva';
 const FormItem = Form.Item;
@@ -12,9 +18,10 @@ class SearchForm extends Component {
         super(props);
         this.state={
 
-        }
+        };
     }
-    handleSubmit=(e)=>{
+
+    handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             console.log('------- search_value -------',values);
@@ -28,11 +35,12 @@ class SearchForm extends Component {
     }
     handleFormReset = ()=>{
         this.props.form.resetFields();
-        this.props.handleFormReset()
+        // this.props.handleFormReset();
+        // console.log(this.props.handleFormReset());
     }
     render(){
         const { getFieldDecorator } = this.props.form;
-        const {handleFormReset} = this.props;
+        const { handleFormReset } = this.props;
         console.log('----- SearchForm handleFormReset -----',handleFormReset);
         return (
             <Form layout="inline" onSubmit={this.handleSubmit}>
@@ -40,27 +48,20 @@ class SearchForm extends Component {
                     {getFieldDecorator('name', { })( <Input placeholder="主办方名称"/>)}
                 </FormItem>
                 <FormItem>
-                    <Button 
-                        type="primary" 
-                        htmlType="submit" 
-                    > 
-                        查询 
+                    <Button type="primary" htmlType="submit">
+                        查询
                     </Button>
-                    <Button 
-                        type='primary' 
-                        style={{ marginLeft: 8 }} 
-                        onClick={this.handleFormReset}
-                    > 
-                        重置 
+                    <Button type='primary' style={{ marginLeft: 8 }} onClick={this.handleFormReset}>
+                        重置
                     </Button>
                 </FormItem>
             </Form>)
     }
-    
-} 
+
+}
 
 // @Form.create()
-// @connect(({match})=>({match})) 
+// @connect(({match})=>({match}))
 
 SearchForm = Form.create()(SearchForm);
 SearchForm = connect(({sponsor})=>({sponsor}))(SearchForm);
@@ -85,21 +86,22 @@ class TableList extends Component{
     componentDidMount(){
         this.fetchData()
     }
-    onChange = (selectedRowKeys, selectedRows) => { 
+    onChange = (selectedRowKeys, selectedRows) => {
         console.log(selectedRows);
         this.setState({
             selectedRows
         })
     }
     handleDelete= () => {
-        const selectKeys = this.state.selectedRows.map((Row)=>(Row.key)); console.log(selectKeys)
+        const selectKeys = this.state.selectedRows.map((Row)=>(Row.key));
+        console.log(selectKeys);
         this.props.dispatch({
             type:'sponsor/delete',
             payload:{deleteKeys:selectKeys}
         })
     }
     deleteOne = (deleteKey) => {
-    
+        console.log(deleteKey);
         this.props.dispatch({
             type:'sponsor/delete',
             payload:{deleteKeys:[deleteKey]}
@@ -111,7 +113,8 @@ class TableList extends Component{
             visible: false,
         });
     }
-    showEditModal = (record) =>{ 
+    showEditModal = (record) =>{
+        console.log(record);
         this.setState({
             isAdding:false,
             visible: true,
@@ -163,7 +166,7 @@ class TableList extends Component{
             title: '类型',
             dataIndex: 'type',
             align:'center',
-            render: val => (val==0 ? '协会':'俱乐部'),
+            render: val => (val === 0 ? '协会':'俱乐部'),
         }, {
             title: '负责人',
             dataIndex: 'owner',
@@ -181,22 +184,24 @@ class TableList extends Component{
             dataIndex: 'action',
             key: 'action',
             align:'center',
-            render: (text,record) => { 
-                console.log(record)
+            render: (text,record) => {
+                console.log(record.key);
                 return (<div>
                             <Popconfirm title="确认删除?" okText="确认" cancelText="取消" onConfirm={() => {this.deleteOne(record.key)}} >
-                            <a href="javascript:;">删除</a> 
+                            <a href="# ">删除</a>
                             </Popconfirm>
                             <Divider type="vertical" />
-                            <a onClick={()=>this.showEditModal(record)}>编辑</a>
+                            <a href="# " onClick={()=>this.showEditModal(record)}>编辑</a>
                         </div>)
             },
         }];
+
         const {sponsor:{list},form:{getFieldDecorator}} = this.props;
         console.log('-------- sponsor_props --------',this.props);
         const {visible,isAdding,currentRowData} = this.state;
+        console.log('-------- this.state -------',this.state);
         console.log('------- currentRowData -------',currentRowData)
-        const modalFooter = 
+        const modalFooter =
         isAdding ? { okText: '添加', onOk: this.handleAdd, onCancel: this.handleCancel}
             : { okText: '保存', onOk: this.handleEdit, onCancel: this.handleCancel };
 
@@ -214,7 +219,7 @@ class TableList extends Component{
                     <FormItem label="主办方类型" >
                     {getFieldDecorator('type', {
                         rules: [{ required: true, message: '请输入主办方类型' }],
-                    })( 
+                    })(
                             <Select placeholder="请选择">
                                 <Option value="0">协会</Option>
                                 <Option value="1">俱乐部</Option>
@@ -240,10 +245,10 @@ class TableList extends Component{
                     </FormItem>
                 </Form>
             );
-            }else{ 
+            }else{
                 console.log('-------- isAdding-编辑 --------');
                 return (
-                    <Form >
+                  <Form >
                     <FormItem label="主办方名称" >
                     {getFieldDecorator('name', {
                         initialValue:currentRowData.name,
@@ -255,7 +260,7 @@ class TableList extends Component{
                     {getFieldDecorator('type', {
                         initialValue:currentRowData.type === 0 ? '协会':'俱乐部',
                         rules: [{ required: true, message: '请输入主办方类型' }],
-                    })( 
+                    })(
                             <Select placeholder="请选择" style={{ width: '200px' }}>
                                 <Option value="0">协会</Option>
                                 <Option value="1">俱乐部</Option>
@@ -282,25 +287,32 @@ class TableList extends Component{
                             rules: [{ required: true, message: '请输入地址' }]
                         })(<Input placeholder="主办方地址" />)}
                     </FormItem>
-                </Form>
+                  </Form>
                 );
             }
         };
 
         return (
             <div>
+                {/* 搜索框 */}
                 <SearchForm handleFormReset={this.fetchData} />
+                {/* 新建 & 批量删除 */}
                 <div style={{ overflow:'hidden',lineHeight:'50px', height:'50px' }} >
-                    <Button onClick={this.handleDelete} style={{ float:'right',marginRight:'2%',marginTop:'1%' }} >删除</Button>
-                    <Button onClick={this.showAddModal} style={{ float:'right',marginRight:'2%',marginTop:'1%' }} >新建</Button> 
+                    <Button onClick={this.handleDelete} style={{ float:'right',marginRight:'2%',marginTop:'1%' }}>
+                      批量删除
+                    </Button>
+                    <Button onClick={this.showAddModal} style={{ float:'right',marginRight:'2%',marginTop:'1%' }}>
+                      新建
+                    </Button>
                 </div>
-                <Table 
-                    rowSelection={{onChange:this.onChange}} 
-                    dataSource={list} 
+                {/* 数据表格 */}
+                <Table
+                    rowSelection={{onChange:this.onChange}}
+                    dataSource={list}
                     columns={columns}
                 />
                 <Modal
-                title={isAdding?'添加':'编辑'} 
+                title={isAdding?'添加':'编辑'}
                 width={400}
                 cancelText='取消'
                 destroyOnClose
@@ -310,13 +322,13 @@ class TableList extends Component{
                     {getModalContent()}
                 </Modal>
             </div>
-            
+
         )
     }
 }
 
 // @Form.create()
-// @connect(({match})=>({match})) 
+// @connect(({match})=>({match}))
 
 TableList = Form.create()(TableList);
 TableList = connect(({sponsor})=>({sponsor}))(TableList);

@@ -12,7 +12,7 @@ export default {
       routes: {
         exclude: [],
       },
-      hardSource: true,
+      hardSource: false,
     }],
   ],
 }
